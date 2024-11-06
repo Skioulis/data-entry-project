@@ -13,15 +13,14 @@ def get_soup(url: str = zillow_clone_url):
 
 soup = get_soup()
 
+
+def get_the_urls():
+    url_list = soup.select("a.property-card-link")
+    return [url.get('href') for url in url_list]
+
+
 class Scraping:
     def __init__(self):
-        self.listings = self.get_the_urls()
+        self.listings = get_the_urls()
         self.prices = []
         self.addresses = []
-
-
-
-
-    def get_the_urls(self):
-        url_list = soup.select("a.property-card-link")
-        return [url.get('href') for url in url_list]
