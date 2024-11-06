@@ -13,4 +13,4 @@ zillow_clone_url="https://appbrewery.github.io/Zillow-Clone/"
 
 scrape= Scraping()
 
-print(scrape.listings)
+
