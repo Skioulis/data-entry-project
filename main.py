@@ -7,12 +7,12 @@ from os import getenv
 from time import sleep
 from bs4 import BeautifulSoup
 import requests
-from scraping import Scraping
+from scraping import Scraping, Listing
 
 zillow_clone_url="https://appbrewery.github.io/Zillow-Clone/"
 
 scrape= Scraping()
 
-for i in range(len(scrape.prices)):
-    print(f"{i}. - the building in this address: {scrape.addresses[i]} with price: {scrape.prices[i]} and link: {scrape.listings[i]}")
 
+
+print(scrape.listings[1])

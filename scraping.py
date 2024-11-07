@@ -35,12 +35,23 @@ def get_the_addresses():
     return [address.getText().strip() for address in soup.select("a.StyledPropertyCardDataArea-anchor address")]
 
 
+class Listing:
+    def __init__(self, url : str, price : str, address: str ):
+        self.url = url
+        self.price = price
+        self.address = address
+
+    def __str__(self):
+        return f"The house at this: {self.address} is listed at: {self.price} with this url: {self.url}"
 
 
 class Scraping:
     def __init__(self):
-        self.listings = get_the_urls()
-        self.prices = get_the_prices()
-        self.addresses = get_the_addresses()
+        urls = get_the_urls()
+        prices = get_the_prices()
+        addresses = get_the_addresses()
+        self.listings = []
+        for i in range(len(urls)):
+            self.listings.append(Listing(url=urls[i], price=prices[i], address=addresses[i]))
 
 
