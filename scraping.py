@@ -1,8 +1,11 @@
-from time import sleep
 from bs4 import BeautifulSoup
 import requests
+from dotenv import load_dotenv
+from os import getenv
 
-zillow_clone_url="https://appbrewery.github.io/Zillow-Clone/"
+load_dotenv(dotenv_path=".env")
+zillow_clone_url=getenv("link-to-zillow")
+
 header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"}
 
 
@@ -51,7 +54,10 @@ class Scraping:
         prices = get_the_prices()
         addresses = get_the_addresses()
         self.listings = []
+        self.no_of_listings = len(urls)
         for i in range(len(urls)):
             self.listings.append(Listing(url=urls[i], price=prices[i], address=addresses[i]))
+
+
 
 
